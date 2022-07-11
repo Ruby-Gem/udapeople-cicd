@@ -158,7 +158,7 @@ jobs:
             cd .circleci/ansible
             aws ec2 describe-instances \
             --query 'Reservation[*].Instances[*].PublicIpAddress' \
-            --output text >> inventory.txta
+            --output text >> inventory.txt
       - run:
           name: View ansible inventory
           command:
