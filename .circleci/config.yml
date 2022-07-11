@@ -166,26 +166,26 @@ jobs:
             - project/.circleci/ansible/inventory.txt
       # - destroy-environment    
 
-  # configure-infrastructure:
-  #   docker:
-  #     - image: python:3.10-alpine3.16
-  #   steps:
-  #     - checkout
-  #     - add_ssh_keys:
-  #         fingerprint: ["81:ee:f5:60:3b:2b:e0:0e:e0:91:b8:62:64:5c:af:79"]
-  #     - run:
-  #         name: Install dependencies
-  #         command: |
-  #           apk add --update --nocache tar gzip ansible aws-cli
-  #     - attach_workspace :
-  #         at: ~/     
-  #     - run:
-  #         name: Configure server
-  #         command: |
-  #          cd .circleci/ansible
-  #          cat inventory.txt
-  #          ansible-playbook -i inventory.txt configure-server.yml
-  #     - destroy-environment     
+  configure-infrastructure:
+    docker:
+      - image: python:3.10-alpine3.16
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprint: ["81:ee:f5:60:3b:2b:e0:0e:e0:91:b8:62:64:5c:af:79"]
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --update --nocache tar gzip ansible aws-cli
+      - attach_workspace :
+          at: ~/     
+      - run:
+          name: Configure server
+          command: |
+           cd .circleci/ansible
+           cat inventory.txt
+           ansible-playbook -i inventory.txt configure-server.yml
+      # - destroy-environment     
       # save backend back to workspace
       # - persist_to_workspace:
       #     root: ~/
