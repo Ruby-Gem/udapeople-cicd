@@ -163,6 +163,7 @@ jobs:
           name: View ansible inventory
           command:
             cd .circleci/ansible
+            ls 
             cat inventory.txt
 
       - persist_to_workspace:
