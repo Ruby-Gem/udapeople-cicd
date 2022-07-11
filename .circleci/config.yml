@@ -155,11 +155,16 @@ jobs:
       - run:
           name: Add back-end ip to ansible inventory
           command: |
-            echo $(aws ec2 describe-instances \
-              --filters "Name=tag:aws:cloudformation:stack-name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7}" \
-              --query 'Reservation[*].Instances[*].PublicIpAddress' \
-              --output text) >> ~/project/.circleci/ansible/inventory.txt
-            cat ~/project/.circleci/ansible/inventory.txt
+            cd .circleci/ansible
+            aws ec2 describe-instances \
+            --query 'Reservation[*].Instances[*].PublicIpAddress' \
+            --output text >> inventory.txt
+      - run:
+          name: View ansible inventory
+          command:
+            cd .circleci/ansible
+            cat inventory.txt
+
       - persist_to_workspace:
           root: ~/
           paths:
