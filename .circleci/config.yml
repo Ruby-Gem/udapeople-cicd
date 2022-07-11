@@ -1,6 +1,6 @@
 version: 2.1
 
-# commands:
+# commands:       
   # destroy-environment:
   #   description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
   #   parameters:
@@ -176,7 +176,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk add --update --nocache tar gzip ansible aws-cli
+            apk add --update --no-cache tar gzip ansible aws-cli
       - attach_workspace :
           at: ~/     
       - run:
