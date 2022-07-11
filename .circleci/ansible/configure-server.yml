@@ -22,11 +22,11 @@
         name: python3
         state: latest
         update_cache: yes
-      become: true
-      raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3)
-      changed_when: false
+    #   become: true
+    #   raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3)
+    #   changed_when: false
 
-    - setup:
+    # - setup:
 
   roles:
     - configure-server
