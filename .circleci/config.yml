@@ -167,7 +167,7 @@ jobs:
       # - destroy-environment
 
   # configure-infrastructure:
-  #   docker:
+  #   docker:git
   #     - image: python:3.10-alpine3.16
   #   steps:
   #     - checkout
