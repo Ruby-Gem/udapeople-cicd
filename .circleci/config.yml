@@ -134,7 +134,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: yum install -y tar gzip
+          name: install tar utility
           command:
             yum Install -y tar gzip
       - run:
